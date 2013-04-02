@@ -1,0 +1,20 @@
+// =============================================
+//       Cycle styles by Gary Hepting 
+//          Last Updated:2013-3-23
+// =============================================
+
+
+
+
+.cycle-slideshow {
+  > * {
+    display:none;
+    &:first-child {
+      display:block;
+    }
+  }
+}
+
+.cycle-slide {
+  display:block;
+}

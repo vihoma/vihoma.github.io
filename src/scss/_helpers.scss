@@ -1,0 +1,114 @@
+// ====================
+//    layout helpers 
+// ====================
+
+%clear, %clearfix { clear:both;
+  &:after         { content:''; display:block; clear:both; }
+}
+%padded           { padding:$gutter;
+  &%double        { padding:$gutter*2; }
+  &%triple        { padding:$gutter*3; }
+}
+%pad-top          { padding-top:$gutter;
+  &%double        { padding-top:$gutter*2; }
+  &%triple        { padding-top:$gutter*3; }
+}
+%pad-right        { padding-right:$gutter;
+  &%double        { padding-right:$gutter*2; }
+  &%triple        { padding-right:$gutter*3; }
+}
+%pad-bottom       { padding-bottom:$gutter;
+  &%double        { padding-bottom:$gutter*2; }
+  &%triple        { padding-bottom:$gutter*3; }
+}
+%pad-left         { padding-left:$gutter;
+  &%double        { padding-left:$gutter*2; }
+  &%triple        { padding-left:$gutter*3; }
+}
+%gapped           { margin:$gutter;
+  &%double        { margin:$gutter*2; }
+  &%triple        { margin:$gutter*3; }
+}
+%gap-top          { margin-top:$gutter;
+  &%double        { margin-top:$gutter*2; }
+  &%triple        { margin-top:$gutter*3; }
+}
+%gap-right        { margin-right:$gutter;
+  &%double        { margin-right:$gutter*2; }
+  &%triple        { margin-right:$gutter*3; }
+}
+%gap-bottom       { margin-bottom:$gutter;
+  &%double        { margin-bottom:$gutter*2; }
+  &%triple        { margin-bottom:$gutter*3; }
+}
+%gap-left         { margin-left:$gutter;
+  &%double        { margin-left:$gutter*2; }
+  &%triple        { margin-left:$gutter*3; }
+}
+%stick            { position:fixed; z-index:1;
+  &%top           { top:0; }
+  &%right         { right:0; }
+  &%bottom        { bottom:0; }
+  &%left          { left:0; }
+  &%middle        { top:50%; }
+  &%center        { left:50%; }
+}
+%inline           { display:inline-block; width:auto; }
+%block            { display:block; }
+%zero             { margin:0; padding:0; }
+%pull-right       { float:right; }
+%pull-left        { float:left; }
+%bordered         { border: 1px solid $border-color; }
+%border-top       { border-top:1px solid $border-color; }
+%border-right     { border-right:1px solid $border-color; }
+%border-bottom    { border-bottom:1px solid $border-color; }
+%border-left      { border-left:1px solid $border-color; }
+%align-top        { display:table-cell; vertical-align:top; } // must have height (experimental)
+%align-right      { text-align:right; }
+%align-bottom     { display:table-cell; vertical-align:bottom; } // must have height (experimental)
+%align-left       { text-align:left; }
+%align-center     { text-align:center; }
+%justify          { text-align:justify; }
+%truncate         { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+%center           { @extend %block; margin:0 auto; }
+%space            { height:$gutter; }
+%round            { @include rounded(9999px); }
+%disabled         { @include disabled(true); }
+%rotate-90        { @extend %inline; @include rotate(90deg); }
+%rotate-180       { @extend %inline; @include rotate(180deg); }
+%rotate-270       { @extend %inline; @include rotate(270deg); }
+%rotate-90-ctr    { @extend %inline; @include rotate(-90deg); }
+%rotate-180-ctr   { @extend %inline; @include rotate(-180deg); }
+%rotate-270-ctr   { @extend %inline; @include rotate(-270deg); }
+@if $classes {
+
+  $helpers: inline block zero pull-right pull-left bordered border-right border-left border-top border-bottom align-top align-right align-bottom align-left align-center justify center space round disabled rotate-90 rotate-180 rotate-270 rotate-90-ctr rotate-180-ctr rotate-270-ctr;
+  // function to generate the helpers
+  @for $i from 1 through length($helpers) {
+    .#{nth($helpers, $i)} { @extend %#{nth($helpers, $i)}; }
+  }
+
+  $spacers: padded pad-top pad-right pad-bottom pad-left gapped gap-top gap-right gap-bottom gap-left;
+  $modifiers: double triple;
+  // function to generate the spacers
+  @for $i from 1 through length($spacers) {
+    .#{nth($spacers, $i)} { @extend %#{nth($spacers, $i)};
+      &.double        { @extend %double; }
+      &.triple        { @extend %triple; }
+    }
+  }
+
+  .clear, .clearfix { @extend %clear;
+    &:after         { content:''; display:block; clear:both; }
+  }
+
+  .stick            { @extend %stick;
+    &.top           { @extend %top; }
+    &.right         { @extend %right; }
+    &.bottom        { @extend %bottom; }
+    &.left          { @extend %left; }
+    &.middle        { @extend %middle; }
+    &.center        { @extend %center; }
+  }
+
+}

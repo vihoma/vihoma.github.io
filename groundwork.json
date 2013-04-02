@@ -1,0 +1,32 @@
+{
+  "name": "groundwork",
+  "title": "GroundworkCSS",
+  "description": "A Responsive HTML5, CSS & Javascript Framework",
+  "keywords": [
+    "groundwork",
+    "responsive",
+    "framework",
+    "css",
+    "javascript",
+    "grid"
+  ],
+  "version": "1.3",
+  "author": {
+    "name": "Gary Hepting",
+    "url": "http://groundworkcss.github.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://groundworkcss.github.com/groundwork/LICENSE.txt"
+    },
+    {
+      "type": "GPL",
+      "url": "http://groundworkcss.github.com/groundwork/LICENSE_GPL.txt"
+    }
+  ],
+  "bugs": "https://github.com/groundworkcss/groundwork/issues",
+  "homepage": "http://groundworkcss.github.com/",
+  "docs": "http://groundworkcss.github.com/",
+  "download": "https://github.com/groundworkcss/groundwork/archive/master.zip"
+}
