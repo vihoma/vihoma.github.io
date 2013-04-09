@@ -2013,19 +2013,22 @@ nav ul li.on > a, nav ul li.on > a:visited {
   background: #198d98;
   text-decoration: none;
 }
+/* Oma I */
 nav ul li a, nav ul li a:visited {
   display: block;
   width: 100%;
   word-wrap: break-word;
   padding: 0.25em 1em;
-  background: #1dabb8;
+  /*background: #1dabb8;*/
+  background: #CE0616;
   border: 1px solid #dddddd;
   color: white;
   font-weight: bold;
   font-size: 1em;
   text-decoration: none;
   text-align: center;
-  cursor: pointer;
+  /*cursor: pointer;*/
+  cursor: crosshair;
   line-height: 1.5;
   -ms-transition: background-color 0.25s ease-out;
   -o-transition: background-color 0.25s ease-out;
@@ -2033,13 +2036,15 @@ nav ul li a, nav ul li a:visited {
   -webkit-transition: background-color 0.25s ease-out;
   transition: background-color 0.25s ease-out;
 }
+/* Oma II */
 nav ul li a:hover, nav ul li a:focus, nav ul li a:visited:hover, nav ul li a:visited:focus {
-  background: #198d98;
+  background: #9C0412;
   border: 1px solid #dddddd;
   text-decoration: none;
 }
+/* Oma III */
 nav ul li a.active:hover, nav ul li a.active:focus, nav ul li a:visited.active:hover, nav ul li a:visited.active:focus {
-  background: #198d98;
+  background: #9C0412;
 }
 nav ul li.menu > a:after {
   content: '\f0d7';
@@ -2061,6 +2066,7 @@ nav ul li.menu > a:after {
 }
 nav ul li.on ul {
   display: block !important;
+  background: #9C0412;
 }
 nav ul li:first-child a, nav ul li:first-child a:visited {
   -ms-border-radius: 4px 4px 0 0;
