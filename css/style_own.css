@@ -33,6 +33,22 @@ h1.metal_shadow {
   text-shadow: 5px 5px 5px #F00A10;
 }
 
+@font-face {
+  font-family: 'BPdotsMinusiBold';
+  src: url('../font/BPdotsMinusBold-webfont.eot');
+  src: url('../font/BPdotsMinusBold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/BPdotsMinusBold-webfont.woff') format('woff'),
+       url('../font/BPdotsMinusBold-webfont.ttf') format('truetype'),
+       url('../font/BPdotsMinusBold-webfont.svg#BPdotsMinusBold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#bpdots {
+  font-family: 'BPdotsMinusiBold';
+  font-size: xx-large;
+  text-shadow: 10px 10px 10px #FF3A10;
+
 p.shadow {
   font-family: 'Metal Mania', sans-serif;
   font-size: large;
