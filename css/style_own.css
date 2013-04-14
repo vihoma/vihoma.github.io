@@ -26,39 +26,16 @@ p.center {
   text-align: center;
 }
 
-h1.metal_shadow {
+/* Replaced with #bpdots */
+/*h1.metal_shadow {
   font-family: 'Metal Mania', sans-serif;
   font-size: xx-large;
-  /*text-align: center;*/
   text-shadow: 5px 5px 5px #F00A10;
-}
-
-@font-face {
-  font-family: 'BPdotsMinusiBold';
-  src: url('../font/BPdotsMinusBold-webfont.eot');
-  src: url('../font/BPdotsMinusBold-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../font/BPdotsMinusBold-webfont.woff') format('woff'),
-       url('../font/BPdotsMinusBold-webfont.ttf') format('truetype'),
-       url('../font/BPdotsMinusBold-webfont.svg#BPdotsMinusBold') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-#bpdots {
-  font-family: 'BPdotsMinusiBold';
-  font-size: xx-large;
-  text-shadow: 10px 10px 10px #FF3A10;
-
-p.shadow {
-  font-family: 'Metal Mania', sans-serif;
-  font-size: large;
-  text-align: center;
-  text-shadow: 5px 5px 5px #F00A10;
-}
+}*/
 
 ol.fnote {
-  font-style: italic;
-  font-size: smaller;
+  font-style: italic !important;
+  font-size: smaller !important;
 }
 
 p.up {
@@ -85,14 +62,9 @@ p.up {
   margin: inherit;
 }
 
-img.ramblo {
+#ramblo {
   width: 150px;
   height: 127px
-}
-
-img.valid {
-  width: 88px;
-  height: 31px;
 }
 
 img.desktop {
@@ -107,11 +79,6 @@ img.camera {
   height: 200px;
   float: inherit;
   margin: inherit;
-}
-
-#omakuva {
-  width: 266px;
-  height: 356px;
 }
 
 #imgtable {
@@ -129,19 +96,25 @@ table.courses {
   height: auto;
 }
 
-td.uline {
+.uline {
+  background: #000000 !important;
+  color: #FFFFFF !important;
   border-style: solid;
   border-color: transparent transparent white transparent;
   border-width: 2px;
 }
 
 td.image {
+  background: #000000 !important;
+  color: #FFFFFF !important;
   border-style: solid;
   border-color: white transparent white white;
   border-width: 2px;
 }
 
 td.imgdesc {
+  background: #000000 !important;
+  color: #FFFFFF !important;
   border-style: solid;
   border-color: white white white transparent;
   border-width: 2px;
@@ -151,15 +124,15 @@ td.imgdesc {
 }
 
 #grid {
-  width: 405px;
-  height: 190px;
+  width: 1200px;
+  height: 400px;
   border: 0;
   padding-right: 40px;
 }
 
 #seti {
-  width: 155px;
-  height: 119px;
+  width: 165px;
+  height: 129px;
   border: 0;
 }
 
@@ -167,3 +140,21 @@ td.imgdesc {
   width: 468px;
   height: 60px;
   border: 0;
+}
+
+@font-face {
+  font-family: 'BPdotsMinusiBold';
+  src: url('../font/BPdotsMinusBold-webfont.eot');
+  src: url('../font/BPdotsMinusBold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/BPdotsMinusBold-webfont.woff') format('woff'),
+       url('../font/BPdotsMinusBold-webfont.ttf') format('truetype'),
+       url('../font/BPdotsMinusBold-webfont.svg#BPdotsMinusBold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#bpdots {
+  font-family: 'BPdotsMinusiBold';
+  font-size: xx-large;
+  text-shadow: 10px 10px 10px #FF3A10;
+}

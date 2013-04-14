@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>iBot_1.8.pl</title>
+</head>
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39880086-1', 'inet.fi');
+    ga('send', 'pageview');
+
+    </script>
+<h1><a href="iBot_1.8.pl.src.html#-top-" target="SRC">iBot_1.8.pl</a></h1>
+<h2>Doc Index:</h2>
+<!-- INDEX BEGIN -->
+<div name="index">
+<p><a name="__index__"></a></p>
+
+<ul>
+
+	<li><a href="iBot_1.8.pl.src.html#name" target="SRC">NAME</a></li>
+	<li><a href="iBot_1.8.pl.src.html#synopsis" target="SRC">SYNOPSIS</a></li>
+	<li><a href="iBot_1.8.pl.src.html#description" target="SRC">DESCRIPTION</a></li>
+	<li><a href="iBot_1.8.pl.src.html#overriden_methods_from_bot__basicbot__op" target="SRC">OVERRIDEN METHODS FROM Bot::BasicBot::Op</a></li>
+	<ul>
+
+		<li><a href="iBot_1.8.pl.src.html#init___" target="SRC">init( )</a></li>
+		<li><a href="iBot_1.8.pl.src.html#said__mess_" target="SRC"><code>said($mess)</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#chanjoin__mess_" target="SRC"><code>chanjoin($mess)</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#chanpart__mess_" target="SRC"><code>chanpart($mess)</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#kicked__mess_" target="SRC"><code>kicked($mess)</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#help__" target="SRC"><code>help()</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#tick__" target="SRC"><code>tick()</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#reload__sender_" target="SRC"><code>reload($sender)</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#uptime__" target="SRC"><code>uptime()</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#server_uptime__" target="SRC"><code>server_uptime()</code></a></li>
+		<li><a href="iBot_1.8.pl.src.html#server_version__" target="SRC"><code>server_version()</code></a></li>
+	</ul>
+
+	<li><a href="iBot_1.8.pl.src.html#internal_subroutines" target="SRC">INTERNAL SUBROUTINES</a></li>
+	<ul>
+
+		<li><a href="iBot_1.8.pl.src.html#suboutines_are_mostly_used_by_said___through__self__forkit___" target="SRC">Suboutines are mostly used by <code>said()</code> through $self-&gt;<code>forkit()</code>.</a></li>
+		<li><a href="iBot_1.8.pl.src.html#tvcheck" target="SRC">tvcheck</a></li>
+		<li><a href="iBot_1.8.pl.src.html#version" target="SRC">version</a></li>
+		<li><a href="iBot_1.8.pl.src.html#temp" target="SRC">temp</a></li>
+		<li><a href="iBot_1.8.pl.src.html#flood__channel___who___times_" target="SRC">flood($channel, $who, @times)</a></li>
+		<li><a href="iBot_1.8.pl.src.html#yahoo" target="SRC">yahoo</a></li>
+		<li><a href="iBot_1.8.pl.src.html#urlcheck" target="SRC">urlcheck</a></li>
+	</ul>
+
+	<li><a href="iBot_1.8.pl.src.html#author" target="SRC">AUTHOR</a></li>
+	<li><a href="iBot_1.8.pl.src.html#credits" target="SRC">CREDITS</a></li>
+	<li><a href="iBot_1.8.pl.src.html#system_requirements" target="SRC">SYSTEM REQUIREMENTS</a></li>
+	<li><a href="iBot_1.8.pl.src.html#bugs" target="SRC">BUGS</a></li>
+	<li><a href="iBot_1.8.pl.src.html#see_also" target="SRC">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+<hr />
+<h2>Code Index:</h2>
+<!-- BEGIN CODE INDEX --><a name="code-index"></a>
+<ul>
+<li><a href="iBot_1.8.pl.src.html#package-iBot-" target="SRC">package iBot</a>
+<ul>
+<li><a href="iBot_1.8.pl.src.html#init-" target="SRC">init</a></li>
+<li><a href="iBot_1.8.pl.src.html#said-" target="SRC">said</a></li>
+<li><a href="iBot_1.8.pl.src.html#chanjoin-" target="SRC">chanjoin</a></li>
+<li><a href="iBot_1.8.pl.src.html#chanpart-" target="SRC">chanpart</a></li>
+<li><a href="iBot_1.8.pl.src.html#kicked-" target="SRC">kicked</a></li>
+<li><a href="iBot_1.8.pl.src.html#help-" target="SRC">help</a></li>
+<li><a href="iBot_1.8.pl.src.html#tick-" target="SRC">tick</a></li>
+<li><a href="iBot_1.8.pl.src.html#reload-" target="SRC">reload</a></li>
+<li><a href="iBot_1.8.pl.src.html#uptime-" target="SRC">uptime</a></li>
+<li><a href="iBot_1.8.pl.src.html#server_uptime-" target="SRC">server_uptime</a></li>
+<li><a href="iBot_1.8.pl.src.html#server_version-" target="SRC">server_version</a></li>
+<li><a href="iBot_1.8.pl.src.html#tvcheck-" target="SRC">tvcheck</a></li>
+<li><a href="iBot_1.8.pl.src.html#version-" target="SRC">version</a></li>
+<li><a href="iBot_1.8.pl.src.html#temp-" target="SRC">temp</a></li>
+<li><a href="iBot_1.8.pl.src.html#flood-" target="SRC">flood</a></li>
+<li><a href="iBot_1.8.pl.src.html#yahoo-" target="SRC">yahoo</a></li>
+<li><a href="iBot_1.8.pl.src.html#urlcheck-" target="SRC">urlcheck</a></li>
+</ul>
+</li>
+<li><a href="iBot_1.8.pl.src.html#EOF-" target="SRC">EOF</a></li>
+</ul>
+<!-- END CODE INDEX -->
+</body>
+</html>
