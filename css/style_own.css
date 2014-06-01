@@ -26,13 +26,6 @@ p.center {
   text-align: center;
 }
 
-/* Replaced with #bpdots */
-/*h1.metal_shadow {
-  font-family: 'Metal Mania', sans-serif;
-  font-size: xx-large;
-  text-shadow: 5px 5px 5px #F00A10;
-}*/
-
 ol.fnote {
   font-style: italic !important;
   font-size: xx-small !important;
