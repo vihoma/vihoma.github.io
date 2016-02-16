@@ -59,10 +59,8 @@ A:active { color: #F00; background: white none }
 <span class="synStatement">if</span> (<span class="synIdentifier">$location</span>) {
   <span class="synStatement">if</span> (<span class="synIdentifier">$location</span> <span class="synStatement">eq</span> <span class="synConstant">&quot;[Hh][Ee][Ll][Pp]&quot;</span>) {
     help();
-  } <span class="synStatement">elsif</span> (<span class="synIdentifier">$location</span>) {
-    defout();
   } <span class="synStatement">else</span> {
-    help();
+    defout();
   }
 } <span class="synStatement">else</span> {
   help();
@@ -77,8 +75,8 @@ A:active { color: #F00; background: white none }
 
 <span class="synStatement">sub </span><span class="synIdentifier">help </span>{
   <span class="synStatement">print</span> <span class="synConstant">&quot;Please check the city is spelled correctly. Cities with spaces must</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-  <span class="synStatement">print</span> <span class="synConstant">&quot;be put inside quotes and for the U.S. cities the state must be</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-  <span class="synStatement">print</span> <span class="synConstant">&quot;defined, separated by a comma.</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
+  <span class="synStatement">print</span> <span class="synConstant">&quot;be put inside quotes and for the U.S. and Canadian cities the</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
+  <span class="synStatement">print</span> <span class="synConstant">&quot;state must be defined, separated by a comma.</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
 }
 
 <span class="synConstant">1</span>;
