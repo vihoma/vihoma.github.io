@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
  <head>
@@ -60,13 +61,13 @@ A:active { color: #F00; background: white none }
   <span class="synStatement">if</span> (<span class="synIdentifier">$location</span> <span class="synStatement">eq</span> <span class="synConstant">&quot;[Hh][Ee][Ll][Pp]&quot;</span>) {
     help();
   } <span class="synStatement">else</span> {
-    defout();
+    weather();
   }
 } <span class="synStatement">else</span> {
   help();
 }
 
-<span class="synStatement">sub </span><span class="synIdentifier">defout </span>{
+<span class="synStatement">sub </span><span class="synIdentifier">weather </span>{
   <span class="synStatement">print</span> <span class="synConstant">&quot;Location:</span><span class="synSpecial">\t</span><span class="synIdentifier">${location}</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
   <span class="synStatement">print</span> <span class="synConstant">&quot;Temperature:</span><span class="synSpecial">\t</span><span class="synIdentifier">${temp}</span><span class="synConstant">°C</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
   <span class="synStatement">print</span> <span class="synConstant">&quot;Windchill:</span><span class="synSpecial">\t</span><span class="synIdentifier">${windchill}</span><span class="synConstant">°C</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
