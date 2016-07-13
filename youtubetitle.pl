@@ -44,13 +44,13 @@ sub event_youtubeurl {
         $html =~ s/<\/title>.*//si;
         $html =~ s/\s/ /gs;
 	$html =~ s/&quot;/"/g;
-	$html =~ s/&ouml;/ö/g;
-	$html =~ s/&auml;/ä/g;
-	$html =~ s/&Ouml;/Ö/g;
-	$html =~ s/&Auml;/Ä/g;
+	$html =~ s/&ouml;/Ã¶/g;
+	$html =~ s/&auml;/Ã¤/g;
+	$html =~ s/&Ouml;/Ã–/g;
+	$html =~ s/&Auml;/Ã„/g;
 	$html =~ s/&amp;/&/g;
-	$html =~ s/&#228;/ä/g;
-	$html =~ s/&#246;/ö/g;
+	$html =~ s/&#228;/Ã¤/g;
+	$html =~ s/&#246;/Ã¶/g;
 
         if ($dest eq $srv->{nick}) {
           $srv->print($dest,"*** " . $html, MSGLEVEL_CLIENTCRAP);
