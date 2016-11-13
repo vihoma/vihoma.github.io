@@ -10,13 +10,15 @@
 
 <span class="hl kwa">use</span> strict<span class="hl opt">;</span>
 <span class="hl kwa">use</span> warnings<span class="hl opt">;</span>
-<span class="hl kwa">no</span> warnings<span class="hl opt">;</span>
+<span class="hl kwa">no</span> warnings <span class="hl str">'misc'</span><span class="hl opt">;</span>
 <span class="hl kwa">use</span> <span class="hl num">5.20.0</span><span class="hl opt">;</span>
 <span class="hl kwa">use</span> Carp<span class="hl opt">;</span>
 <span class="hl kwa">use</span> LWP<span class="hl opt">::</span>Simple<span class="hl opt">;</span>
 <span class="hl kwa">use</span> JSON<span class="hl opt">;</span>
 
 <span class="hl kwc">our</span> <span class="hl kwb">$VERSION</span> <span class="hl opt">=</span> <span class="hl str">&quot;1.1&quot;</span><span class="hl opt">;</span>
+
+<span class="hl kwc">binmode</span><span class="hl opt">(</span>STDOUT<span class="hl opt">,</span> <span class="hl str">&quot;:encoding(UTF-8)&quot;</span><span class="hl opt">);</span>
 
 <span class="hl kwc">my</span> <span class="hl kwb">%chr_to_sym</span> <span class="hl opt">= (</span>
     East    <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2190}&quot;</span><span class="hl opt">,</span>
@@ -35,7 +37,7 @@
     WSW     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2197}&quot;</span><span class="hl opt">,</span>
     NW      <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2198}&quot;</span><span class="hl opt">,</span>
     NNW     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2198}&quot;</span><span class="hl opt">,</span>
-    NWN     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2198}&quot;</span><span class="hl opt">,</span>
+    WNW     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2198}&quot;</span><span class="hl opt">,</span>
     NE      <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2199}&quot;</span><span class="hl opt">,</span>
     NNE     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2199}&quot;</span><span class="hl opt">,</span>
     NEN     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2199}&quot;</span><span class="hl opt">,</span>

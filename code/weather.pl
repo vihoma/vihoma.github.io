@@ -2,13 +2,15 @@
 
 use strict;
 use warnings;
-no warnings;
+no warnings 'misc';
 use 5.20.0;
 use Carp;
 use LWP::Simple;
 use JSON;
 
 our $VERSION = "1.1";
+
+binmode(STDOUT, ":encoding(UTF-8)");
 
 my %chr_to_sym = (
     East    =>  "\N{U+2190}",
@@ -27,7 +29,7 @@ my %chr_to_sym = (
     WSW     =>  "\N{U+2197}",
     NW      =>  "\N{U+2198}",
     NNW     =>  "\N{U+2198}",
-    NWN     =>  "\N{U+2198}",
+    WNW     =>  "\N{U+2198}",
     NE      =>  "\N{U+2199}",
     NNE     =>  "\N{U+2199}",
     NEN     =>  "\N{U+2199}",
