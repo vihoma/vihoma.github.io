@@ -4,6 +4,7 @@ use strict;
 use warnings;
 no warnings 'misc';
 use 5.20.0;
+use utf8;
 use Carp;
 use LWP::Simple;
 use JSON;
