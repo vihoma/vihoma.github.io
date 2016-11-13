@@ -1,87 +1,104 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
- <head>
-  <title>[untitled]</title>
-  <style>
-/*
- * A stylesheet designed to be used with the HTML output of the
- * Perl module Text::Highlight::Vim.
- *
- * This is designed to make the highlighting look like the default gvim
- * colour scheme, with 'background=light'.
- *
- * Geoff Richards (qef@laxan.com)
- *
- * This CSS file (light.css) is public domain.  Do what you want with it.
- * That doesn't mean that HTML with this CSS in is public domain.
- */
+<head>
+<meta charset="UTF-8">
+<title>weather.pl</title>
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl slc">#!/usr/bin/env perl</span>
 
-body { color: black; background: white none }
+<span class="hl kwa">use</span> strict<span class="hl opt">;</span>
+<span class="hl kwa">use</span> warnings<span class="hl opt">;</span>
+<span class="hl kwa">no</span> warnings<span class="hl opt">;</span>
+<span class="hl kwa">use</span> <span class="hl num">5.20.0</span><span class="hl opt">;</span>
+<span class="hl kwa">use</span> Carp<span class="hl opt">;</span>
+<span class="hl kwa">use</span> LWP<span class="hl opt">::</span>Simple<span class="hl opt">;</span>
+<span class="hl kwa">use</span> JSON<span class="hl opt">;</span>
 
-A:link { color: #00F; background: white none }
-A:visited { color: #909; background: white none }
-A:hover { color: #F00; background: white none }
-A:active { color: #F00; background: white none }
+<span class="hl kwc">our</span> <span class="hl kwb">$VERSION</span> <span class="hl opt">=</span> <span class="hl str">&quot;1.1&quot;</span><span class="hl opt">;</span>
 
-.synComment    { color: #0000FF }
-.synConstant   { color: #FF00FF }
-.synIdentifier { color: #008B8B }
-.synStatement  { color: #A52A2A ; font-weight: bold }
-.synPreProc    { color: #A020F0 }
-.synType       { color: #2E8B57 ; font-weight: bold }
-.synSpecial    { color: #6A5ACD }
-.synUnderlined { color: #000000 ; text-decoration: underline }
-.synError      { color: #FFFFFF ; background: #FF0000 none }
-.synTodo       { color: #0000FF ; background: #FFFF00 none }
-</style>
- </head>
- <body>
+<span class="hl kwc">my</span> <span class="hl kwb">%chr_to_sym</span> <span class="hl opt">= (</span>
+    East    <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2190}&quot;</span><span class="hl opt">,</span>
+    E       <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2190}&quot;</span><span class="hl opt">,</span>
+    South   <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2191}&quot;</span><span class="hl opt">,</span>
+    S       <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2191}&quot;</span><span class="hl opt">,</span>
+    West    <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2192}&quot;</span><span class="hl opt">,</span>
+    W       <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2192}&quot;</span><span class="hl opt">,</span>
+    North   <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2193}&quot;</span><span class="hl opt">,</span>
+    N       <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2193}&quot;</span><span class="hl opt">,</span>
+    SE      <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2196}&quot;</span><span class="hl opt">,</span>
+    SSE     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2196}&quot;</span><span class="hl opt">,</span>
+    ESE     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2196}&quot;</span><span class="hl opt">,</span>
+    SW      <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2197}&quot;</span><span class="hl opt">,</span>
+    SSW     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2197}&quot;</span><span class="hl opt">,</span>
+    WSW     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2197}&quot;</span><span class="hl opt">,</span>
+    NW      <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2198}&quot;</span><span class="hl opt">,</span>
+    NNW     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2198}&quot;</span><span class="hl opt">,</span>
+    NWN     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2198}&quot;</span><span class="hl opt">,</span>
+    NE      <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2199}&quot;</span><span class="hl opt">,</span>
+    NNE     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2199}&quot;</span><span class="hl opt">,</span>
+    NEN     <span class="hl opt">=&gt;</span>  <span class="hl str">&quot;\N{U+2199}&quot;</span><span class="hl opt">,</span>
+<span class="hl opt">);</span>
 
-<pre><span class="synPreProc">#!/usr/bin/env perl</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$wind_sym</span> <span class="hl opt">=</span> <span class="hl str">&quot;?&quot;</span><span class="hl opt">;</span>
+<span class="hl kwc">my</span> <span class="hl kwb">&#64;cmdargs</span> <span class="hl opt">=</span> <span class="hl kwb">&#64;ARGV</span><span class="hl opt">;</span>
 
-<span class="synStatement">use strict</span>;
-<span class="synStatement">use warnings</span>;
-<span class="synStatement">use </span>LWP::Simple;
-<span class="synStatement">use </span>JSON;
+<span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwc">not defined</span> <span class="hl kwb">$cmdargs</span><span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]) {</span> help<span class="hl opt">();</span> <span class="hl kwa">exit</span> <span class="hl num">0</span><span class="hl opt">; }</span>
+<span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwb">$cmdargs</span><span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =~</span> <span class="hl kwd">/^help$/isxm</span><span class="hl opt">) {</span> help<span class="hl opt">();</span> <span class="hl kwa">exit</span> <span class="hl num">1</span><span class="hl opt">; }</span>
 
-<span class="synStatement">my</span> <span class="synIdentifier">$param</span> = <span class="synIdentifier">$ARGV[</span><span class="synConstant">0</span><span class="synIdentifier">]</span>;
-<span class="synIdentifier">$param</span> =~ <span class="synStatement">s/</span><span class="synConstant"> </span><span class="synStatement">/</span><span class="synConstant">%20</span><span class="synStatement">/g</span>;
+<span class="hl kwc">my</span> <span class="hl kwb">$param</span><span class="hl opt">;</span>
 
-<span class="synStatement">my</span> <span class="synIdentifier">$content</span> = get(<span class="synConstant">&quot;http://api.wunderground.com/api/2ba36a7898646211/conditions/q/</span><span class="synIdentifier">${param}</span><span class="synConstant">.json&quot;</span>);
+<span class="hl kwa">for</span> <span class="hl kwc">my</span> <span class="hl kwb">$arg</span> <span class="hl opt">(</span><span class="hl kwb">&#64;cmdargs</span><span class="hl opt">) {</span> <span class="hl kwb">$param</span> <span class="hl opt">.=</span> <span class="hl str">&quot;</span><span class="hl ipl">$arg</span> <span class="hl str">&quot;</span><span class="hl opt">; }</span>
+<span class="hl kwb">$param</span> <span class="hl opt">=~</span> <span class="hl kwd">s/ /%20/smg</span><span class="hl opt">;</span>
+<span class="hl kwb">$param</span> <span class="hl opt">=~</span> <span class="hl kwd">s/%20$//sm</span><span class="hl opt">;</span>
 
-<span class="synStatement">my</span> <span class="synIdentifier">$parsed_json</span> = decode_json(<span class="synIdentifier">$content</span>);
-<span class="synStatement">my</span> <span class="synIdentifier">$location</span> =
-<span class="synIdentifier">$parsed_json-&gt;{</span><span class="synConstant">'current_observation'</span><span class="synIdentifier">}-&gt;{</span><span class="synConstant">'observation_location'</span><span class="synIdentifier">}-&gt;{</span><span class="synConstant">'city'</span><span class="synIdentifier">}</span>;
-<span class="synStatement">my</span> <span class="synIdentifier">$temp</span> = <span class="synIdentifier">$parsed_json-&gt;{</span><span class="synConstant">'current_observation'</span><span class="synIdentifier">}-&gt;{</span><span class="synConstant">'temp_c'</span><span class="synIdentifier">}</span>;
-<span class="synStatement">my</span> <span class="synIdentifier">$weather</span> = <span class="synIdentifier">$parsed_json-&gt;{</span><span class="synConstant">'current_observation'</span><span class="synIdentifier">}-&gt;{</span><span class="synConstant">'weather'</span><span class="synIdentifier">}</span>;
-<span class="synStatement">my</span> <span class="synIdentifier">$windchill</span> = <span class="synIdentifier">$parsed_json-&gt;{</span><span class="synConstant">'current_observation'</span><span class="synIdentifier">}-&gt;{</span><span class="synConstant">'windchill_c'</span><span class="synIdentifier">}</span>;
+<span class="hl kwc">my</span> <span class="hl kwb">$content</span> <span class="hl opt">=</span> get<span class="hl opt">(</span><span class="hl str">&quot;http://api.wunderground.com/api/2ba36a7898646211/conditions/q/${param}.json&quot;</span><span class="hl opt">);</span>
+<span class="hl kwc">die</span> <span class="hl str">&quot;Error getting data!&quot;</span> <span class="hl kwa">if</span> <span class="hl opt">(!</span> <span class="hl kwb">$content</span><span class="hl opt">);</span>
 
-<span class="synStatement">if</span> (<span class="synIdentifier">$location</span>) {
-  <span class="synStatement">if</span> (<span class="synIdentifier">$location</span> <span class="synStatement">eq</span> <span class="synConstant">&quot;[Hh][Ee][Ll][Pp]&quot;</span>) {
-    help();
-  } <span class="synStatement">else</span> {
-    weather();
-  }
-} <span class="synStatement">else</span> {
-  help();
-}
+<span class="hl kwc">my</span> <span class="hl kwb">$parsed_json</span> <span class="hl opt">=</span> decode_json<span class="hl opt">(</span><span class="hl kwb">$content</span><span class="hl opt">);</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$country</span> <span class="hl opt">=</span>
+  <span class="hl kwb">$parsed_json</span><span class="hl opt">-&gt;{</span><span class="hl str">'current_observation'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'observation_location'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'country'</span><span class="hl opt">};</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$city</span> <span class="hl opt">=</span>
+  <span class="hl kwb">$parsed_json</span><span class="hl opt">-&gt;{</span><span class="hl str">'current_observation'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'observation_location'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'city'</span><span class="hl opt">};</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$temp</span> <span class="hl opt">=</span> <span class="hl kwb">$parsed_json</span><span class="hl opt">-&gt;{</span><span class="hl str">'current_observation'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'temp_c'</span><span class="hl opt">};</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$wind_str</span> <span class="hl opt">=</span> <span class="hl kwb">$parsed_json</span><span class="hl opt">-&gt;{</span><span class="hl str">'current_observation'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'wind_string'</span><span class="hl opt">};</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$wind_kph</span> <span class="hl opt">=</span> <span class="hl kwb">$parsed_json</span><span class="hl opt">-&gt;{</span><span class="hl str">'current_observation'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'wind_kph'</span><span class="hl opt">};</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$wind_dir</span> <span class="hl opt">=</span> <span class="hl kwb">$parsed_json</span><span class="hl opt">-&gt;{</span><span class="hl str">'current_observation'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'wind_dir'</span><span class="hl opt">};</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$sky</span> <span class="hl opt">=</span> <span class="hl kwb">$parsed_json</span><span class="hl opt">-&gt;{</span><span class="hl str">'current_observation'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'weather'</span><span class="hl opt">};</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$windchill</span> <span class="hl opt">=</span> <span class="hl kwb">$parsed_json</span><span class="hl opt">-&gt;{</span><span class="hl str">'current_observation'</span><span class="hl opt">}-&gt;{</span><span class="hl str">'windchill_c'</span><span class="hl opt">};</span>
 
-<span class="synStatement">sub </span><span class="synIdentifier">weather </span>{
-  <span class="synStatement">print</span> <span class="synConstant">&quot;Location:</span><span class="synSpecial">\t</span><span class="synIdentifier">${location}</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-  <span class="synStatement">print</span> <span class="synConstant">&quot;Temperature:</span><span class="synSpecial">\t</span><span class="synIdentifier">${temp}</span><span class="synConstant">°C</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-  <span class="synStatement">print</span> <span class="synConstant">&quot;Windchill:</span><span class="synSpecial">\t</span><span class="synIdentifier">${windchill}</span><span class="synConstant">°C</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-  <span class="synStatement">print</span> <span class="synConstant">&quot;Weather:</span><span class="synSpecial">\t</span><span class="synIdentifier">${weather}</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-}
+<span class="hl kwa">if</span> <span class="hl opt">(!</span> <span class="hl kwb">$city</span><span class="hl opt">) {</span>
+  <span class="hl kwc">print</span> <span class="hl str">&quot;City not found...</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+  help<span class="hl opt">();</span>
+  <span class="hl kwa">exit</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
 
-<span class="synStatement">sub </span><span class="synIdentifier">help </span>{
-  <span class="synStatement">print</span> <span class="synConstant">&quot;Please check the city is spelled correctly. Cities with spaces must</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-  <span class="synStatement">print</span> <span class="synConstant">&quot;be put inside quotes and for the U.S. and Canadian cities the</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-  <span class="synStatement">print</span> <span class="synConstant">&quot;state must be defined, separated by a comma.</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
-}
+<span class="hl kwa">for</span> <span class="hl kwc">my</span> <span class="hl kwb">$key</span> <span class="hl opt">(</span><span class="hl kwc">keys</span> <span class="hl kwb">%chr_to_sym</span><span class="hl opt">) {</span>
+  <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwb">$wind_dir</span> <span class="hl kwc">eq</span> <span class="hl kwb">$key</span><span class="hl opt">) {</span> <span class="hl kwb">$wind_sym</span> <span class="hl opt">=</span> <span class="hl kwb">$chr_to_sym</span><span class="hl opt">{</span><span class="hl kwb">$key</span><span class="hl opt">}; }</span>
+<span class="hl opt">}</span>
 
-<span class="synConstant">1</span>;
+weather<span class="hl opt">();</span>
+
+<span class="hl kwa">sub</span> weather <span class="hl opt">{</span>
+  <span class="hl kwc">print</span> <span class="hl str">&quot;Location:</span><span class="hl esc">\t</span><span class="hl str">${city}, ${country}</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+  <span class="hl kwc">print</span> <span class="hl str">&quot;Temperature:</span><span class="hl esc">\t</span><span class="hl str">${temp}°C</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+  <span class="hl kwc">print</span> <span class="hl str">&quot;Wind:</span><span class="hl esc">\t\t</span><span class="hl str">${wind_kph}km/h, from</span> <span class="hl ipl">$wind_dir</span> <span class="hl str">(${wind_sym})</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+  <span class="hl kwc">print</span> <span class="hl str">&quot;Windchill:</span><span class="hl esc">\t</span><span class="hl str">${windchill}°C</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+  <span class="hl kwc">print</span> <span class="hl str">&quot;Sky:</span><span class="hl esc">\t\t</span><span class="hl str">${sky}</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+
+  <span class="hl kwa">return</span> <span class="hl num">1</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwa">sub</span> help <span class="hl opt">{</span>
+  <span class="hl kwc">print</span> <span class="hl str">&quot;Usage:</span> <span class="hl ipl">$0</span> <span class="hl str">&lt;city&gt; &lt;state&gt;|&lt;country&gt;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+  <span class="hl kwc">print</span> <span class="hl str">&quot;Please check the city and country or state is spelled correctly!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+
+  <span class="hl kwa">return</span> <span class="hl num">1</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
+
+<span class="hl num">1</span><span class="hl opt">;</span>
 </pre>
-
- </body>
+</body>
 </html>
+<!--HTML generated by highlight 3.18, http://www.andre-simon.de/-->
