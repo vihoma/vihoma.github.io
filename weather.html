@@ -56,7 +56,7 @@
 <span class="hl kwb">$param</span> <span class="hl opt">=~</span> <span class="hl kwd">s/ /%20/smg</span><span class="hl opt">;</span>
 <span class="hl kwb">$param</span> <span class="hl opt">=~</span> <span class="hl kwd">s/%20$//sm</span><span class="hl opt">;</span>
 
-<span class="hl kwc">my</span> <span class="hl kwb">$content</span> <span class="hl opt">=</span> get<span class="hl opt">(</span><span class="hl str">&quot;http://api.wunderground.com/api/2ba36a7898646211/conditions/q/${param}.json&quot;</span><span class="hl opt">);</span>
+<span class="hl kwc">my</span> <span class="hl kwb">$content</span> <span class="hl opt">=</span> get<span class="hl opt">(</span><span class="hl str">&quot;http://api.wunderground.com/api/xxxxxxxxxxx/conditions/q/${param}.json&quot;</span><span class="hl opt">);</span>
 <span class="hl kwc">die</span> <span class="hl str">&quot;Error getting data!&quot;</span> <span class="hl kwa">if</span> <span class="hl opt">(!</span> <span class="hl kwb">$content</span><span class="hl opt">);</span>
 
 <span class="hl kwc">my</span> <span class="hl kwb">$parsed_json</span> <span class="hl opt">=</span> decode_json<span class="hl opt">(</span><span class="hl kwb">$content</span><span class="hl opt">);</span>
