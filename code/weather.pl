@@ -48,7 +48,7 @@ for my $arg (@cmdargs) { $param .= "$arg "; }
 $param =~ s/ /%20/smg;
 $param =~ s/%20$//sm;
 
-my $content = get("http://api.wunderground.com/api/2ba36a7898646211/conditions/q/${param}.json");
+my $content = get("http://api.wunderground.com/xxxxxxxx/conditions/q/${param}.json");
 die "Error getting data!" if (! $content);
 
 my $parsed_json = decode_json($content);
