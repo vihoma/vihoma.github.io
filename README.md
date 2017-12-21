@@ -2,4 +2,4 @@
 # Marko Vihoma's Homepage
 
 #### *My personal homepages*
-Currently at [url]http://helvetti.strangled.net/vihoma[/url]
+Currently at http://helvetti.strangled.net/vihoma
