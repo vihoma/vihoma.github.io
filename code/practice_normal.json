@@ -8,8 +8,8 @@
          "Mage",
          "Warrior",
          "Hunter",
-	 "Shaman",
-	 "Druid"
+         "Shaman",
+         "Druid"
       ],
       "Mage" : [
          "Rogue",
@@ -25,7 +25,7 @@
       "Shaman" : [],
       "Rogue" : [
          "Mage",
-	 "Hunter"
+         "Hunter"
       ],
       "Druid" : [],
       "Hunter" : [],
