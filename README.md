@@ -4,4 +4,4 @@
 ---
 Currently at
 <a href="http://helvetti.strangled.net/vihoma" target="_blank">
-http://helvetti.strangled.net/~markov/</a>
+http://helvetti.strangled.net/vihoma/</a>
