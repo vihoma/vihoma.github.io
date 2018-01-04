@@ -1,0 +1,166 @@
+body {
+  /*background: #00ff7f url(images/backpixel_stripe-1.png)top left repeat;*/
+  background: #000000;
+  color: #ffffff;
+  font-family: sans-serif, arial, helvetica, verdana;
+}
+
+@media print { body {
+  background: #ffffff;
+  color: #000000;
+  font-family: sans-serif, arial, helvetica, verdana;
+  }
+}
+
+a:hover {
+  text-decoration: underline;
+  /*background: yellow;*/
+}
+
+a {
+  color: green;
+  text-decoration: none;
+}
+
+p.center {
+  text-align: center;
+}
+
+ol.fnote {
+  font-style: italic !important;
+  font-size: xx-small !important;
+}
+
+p.up {
+  text-align: center;
+  width: 50%;
+}
+
+#up {
+  width: 32px;
+  height: 36px;
+}
+
+#kuu-0032 {
+  width: 360px;
+  height: 240px;
+  float: inherit;
+  margin: inherit;
+}
+
+#killut {
+  width: 320px;
+  height: 240px;
+  float: inherit;
+  margin: inherit;
+}
+
+#cycology {
+  width: 250px;
+  height: 240px;
+  float: inherit;
+  margin: inherit;
+}
+
+#ramblo {
+  width: 150px;
+  height: 127px
+}
+
+img.desktop {
+  width: 400px;
+  height: 200px;
+  float: inherit;
+  margin: inherit;
+}
+
+img.camera {
+  width:300px;
+  height: 200px;
+  float: inherit;
+  margin: inherit;
+}
+
+#imgtable {
+  border-style: solid;
+  border-color: white;
+  border-width: 4px;
+  width: auto;
+  height: auto;
+}
+
+table.courses {
+  border-style: solid;
+  border-color: white;
+  width: 70%;
+  height: auto;
+}
+
+.uline {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+  border-width: 2px;
+}
+
+.end_table {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+td.image {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-style: solid;
+  border-color: white transparent white white;
+  border-width: 2px;
+}
+
+td.imgdesc {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-style: solid;
+  border-color: white white white transparent;
+  border-width: 2px;
+  padding-left: 2%;
+  padding-right: 2%;
+  text-align: justify;
+}
+
+#grid {
+  width: 1200px;
+  /*height: 400px;*/
+  height: 220px;
+  border: 0;
+  padding-right: 40px;
+}
+
+#seti {
+  width: 165px;
+  height: 129px;
+  border: 0;
+}
+
+#savuton {
+  width: 468px;
+  height: 60px;
+  border: 0;
+}
+
+@font-face {
+  font-family: 'BPdotsMinusiBold';
+  src: url('../font/BPdotsMinusBold-webfont.eot');
+  src: url('../font/BPdotsMinusBold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/BPdotsMinusBold-webfont.woff') format('woff'),
+       url('../font/BPdotsMinusBold-webfont.ttf') format('truetype'),
+       url('../font/BPdotsMinusBold-webfont.svg#BPdotsMinusBold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#bpdots {
+  font-family: 'BPdotsMinusiBold';
+  font-size: xx-large;
+  text-shadow: 10px 10px 10px #FF3A10;
+}
