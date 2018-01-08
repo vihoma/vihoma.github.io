@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+  <title>[untitled]</title>
+  <style>
+/*
+ * A stylesheet designed to be used with the HTML output of the
+ * Perl module Text::Highlight::Vim.
+ *
+ * This is designed to make the highlighting look like the default gvim
+ * colour scheme, with 'background=light'.
+ *
+ * Geoff Richards (qef@laxan.com)
+ *
+ * This CSS file (light.css) is public domain.  Do what you want with it.
+ * That doesn't mean that HTML with this CSS in is public domain.
+ */
+
+body { color: black; background: white none }
+
+A:link { color: #00F; background: white none }
+A:visited { color: #909; background: white none }
+A:hover { color: #F00; background: white none }
+A:active { color: #F00; background: white none }
+
+.synComment    { color: #0000FF }
+.synConstant   { color: #FF00FF }
+.synIdentifier { color: #008B8B }
+.synStatement  { color: #A52A2A ; font-weight: bold }
+.synPreProc    { color: #A020F0 }
+.synType       { color: #2E8B57 ; font-weight: bold }
+.synSpecial    { color: #6A5ACD }
+.synUnderlined { color: #000000 ; text-decoration: underline }
+.synError      { color: #FFFFFF ; background: #FF0000 none }
+.synTodo       { color: #0000FF ; background: #FFFF00 none }
+</style>
+ </head>
+ <body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39880086-1', 'inet.fi');
+    ga('send', 'pageview');
+
+    </script>
+<pre><span class="synPreProc">#!/usr/bin/env perl</span>
+
+<span class="synComment"># Eratosthenes' screen, returns prime numbers smaller than given positive</span>
+<span class="synComment"># integer.</span>
+
+<span class="synStatement">use strict</span>;
+<span class="synStatement">use warnings</span>;
+<span class="synStatement">use </span>Set; <span class="synComment"># My own integer set class</span>
+
+<span class="synStatement">print</span> <span class="synConstant">&quot;Enter a natural number greater than 1: &quot;</span>;
+<span class="synStatement">chomp</span>(<span class="synStatement">my</span> <span class="synIdentifier">$n</span> = <span class="synIdentifier">&lt;STDIN&gt;</span>);
+
+<span class="synStatement">my</span> <span class="synIdentifier">$set</span> = screen(<span class="synIdentifier">$n</span>);
+
+<span class="synStatement">print</span> <span class="synConstant">&quot;Prime numbers smaller or equal than </span><span class="synIdentifier">$n</span><span class="synConstant"> are: &quot;</span> . <span class="synIdentifier">$set-&gt;to_string</span>(). <span class="synConstant">&quot;</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span>;
+
+<span class="synStatement">sub </span><span class="synIdentifier">screen </span>{
+  <span class="synStatement">my</span> <span class="synIdentifier">$n</span> = <span class="synStatement">shift</span>;
+
+  <span class="synStatement">die</span> <span class="synConstant">&quot;There are no primes smaller or than equal than </span><span class="synIdentifier">$n</span><span class="synSpecial">\n</span><span class="synConstant">&quot;</span> <span class="synStatement">if</span> (<span class="synIdentifier">$n</span> &lt; <span class="synConstant">2</span>);
+
+  <span class="synStatement">my</span> <span class="synIdentifier">@s</span> = ( <span class="synConstant">2.</span>.<span class="synIdentifier">$n</span> );
+  <span class="synStatement">my</span> <span class="synIdentifier">$s</span> = Set-&gt;new( <span class="synConstant">2.</span>.<span class="synIdentifier">$n</span> );
+  <span class="synStatement">my</span> <span class="synIdentifier">$a</span> = Set-&gt;new();
+  <span class="synStatement">my</span> <span class="synIdentifier">$b</span>;
+  
+  <span class="synStatement">my</span> <span class="synIdentifier">$r</span> = <span class="synConstant">1</span>;
+  <span class="synStatement">do</span> {
+    <span class="synIdentifier">$b</span> = <span class="synIdentifier">$s-&gt;min</span>();
+    <span class="synIdentifier">$a-&gt;union</span>(<span class="synIdentifier">$b</span>);
+    <span class="synStatement">my</span> <span class="synIdentifier">$m</span> = <span class="synIdentifier">$b</span>;
+    
+    <span class="synStatement">do</span> {
+      <span class="synIdentifier">$s-&gt;remove</span>(<span class="synIdentifier">$m</span>);
+      <span class="synIdentifier">$m</span> = <span class="synIdentifier">$m</span> + <span class="synIdentifier">$b</span>;
+      <span class="synIdentifier">$r</span>++;
+    } <span class="synStatement">until</span> (<span class="synIdentifier">$m</span> &gt; <span class="synIdentifier">$n</span>);
+  } <span class="synStatement">until</span> (<span class="synIdentifier">$b</span> &gt; <span class="synStatement">sqrt</span>(<span class="synIdentifier">$n</span>));
+  
+  <span class="synIdentifier">$a-&gt;union</span>(<span class="synIdentifier">$s</span>);
+
+  <span class="synStatement">return</span> <span class="synIdentifier">$a</span>;
+}
+</pre>
+
+ </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+  <title>[untitled]</title>
+  <style>
+/*
+ * A stylesheet designed to be used with the HTML output of the
+ * Perl module Text::Highlight::Vim.
+ *
+ * This is designed to make the highlighting look like the default gvim
+ * colour scheme, with 'background=light'.
+ *
+ * Geoff Richards (qef@laxan.com)
+ *
+ * This CSS file (light.css) is public domain.  Do what you want with it.
+ * That doesn't mean that HTML with this CSS in is public domain.
+ */
+
+body { color: black; background: white none }
+
+A:link { color: #00F; background: white none }
+A:visited { color: #909; background: white none }
+A:hover { color: #F00; background: white none }
+A:active { color: #F00; background: white none }
+
+.synComment    { color: #0000FF }
+.synConstant   { color: #FF00FF }
+.synIdentifier { color: #008B8B }
+.synStatement  { color: #A52A2A ; font-weight: bold }
+.synPreProc    { color: #A020F0 }
+.synType       { color: #2E8B57 ; font-weight: bold }
+.synSpecial    { color: #6A5ACD }
+.synUnderlined { color: #000000 ; text-decoration: underline }
+.synError      { color: #FFFFFF ; background: #FF0000 none }
+.synTodo       { color: #0000FF ; background: #FFFF00 none }
+</style>
+ </head>
+ <body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39880086-1', 'inet.fi');
+    ga('send', 'pageview');
+
+    </script>
+<pre><span class="synComment">#!/bin/sh</span>
+<span class="synIdentifier">LC_ALL</span>=fi_FI.UTF<span class="synConstant">-8</span>
+<span class="synIdentifier">MPD_HOST</span>=<span class="synStatement">&quot;</span><span class="synConstant">olohuone.marko.homeunix.org</span><span class="synStatement">&quot;</span>;
+<span class="synStatement">export</span><span class="synIdentifier"> MPD_HOST</span>;
+<span class="synIdentifier">STATUS</span>=<span class="synPreProc">$(</span><span class="synSpecial">/opt/</span><span class="synStatement">local</span><span class="synSpecial">/bin/mpc status</span><span class="synStatement">|</span><span class="synSpecial">awk </span><span class="synStatement">'</span><span class="synConstant">/playing/{print $1}</span><span class="synStatement">'</span><span class="synPreProc">)</span>;
+
+<span class="synStatement">if [</span> <span class="synStatement">-n</span> <span class="synPreProc">$STATUS</span> <span class="synStatement">]</span> <span class="synStatement">&amp;&amp;</span> <span class="synStatement">[</span> <span class="synStatement">&quot;</span><span class="synPreProc">$STATUS</span><span class="synStatement">&quot;</span> <span class="synStatement">==</span> <span class="synConstant">&quot;[playing]&quot;</span> <span class="synStatement">];</span> <span class="synStatement">then</span>
+  <span class="synStatement">echo</span><span class="synConstant"> </span><span class="synStatement">&quot;</span><span class="synPreProc">$(</span><span class="synSpecial">/opt/</span><span class="synStatement">local</span><span class="synSpecial">/bin/mpc --format </span><span class="synStatement">&quot;</span><span class="synConstant">%title% [ %name% ]</span><span class="synStatement">&quot;</span><span class="synSpecial"> status</span><span class="synStatement">|</span><span class="synSpecial">/usr/bin/head </span><span class="synConstant">-1</span><span class="synPreProc">)</span><span class="synStatement">&quot;;</span>
+<span class="synStatement">else</span> <span class="synStatement">echo</span><span class="synConstant"> </span><span class="synStatement">&quot;&quot;;</span>
+<span class="synStatement">fi</span>
+</pre>
+
+ </body>
+</html>
