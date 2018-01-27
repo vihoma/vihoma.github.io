@@ -3,5 +3,5 @@
 #### *My personal homepages*
 ---
 Currently at
-<a href="http://helvetti.strangled.net/vihoma" target="_blank">
-http://helvetti.strangled.net/vihoma/</a>
+<a href="https://vihoma.github.io/" target="_blank">
+https://vihoma.github.io/</a>
