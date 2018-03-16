@@ -130,9 +130,9 @@
       </ul>
       <p>
           I have <strong>computers</strong> as a hobby and I own &amp; run at
-          the moment two machines:<br>
+          the moment four machines:<br>
           <strong>#1</strong> <u>A Jimm's Business Class President</u>
-          (assembled in Jimm's PC Store) Xeon E3-1230v3 3,3GHz, 16GB RAM, 250GB
+          (assembled in Jimm's PC Store) Xeon E3-1230v3 3,3GHz, 32GB RAM, 250GB
           Samsung EVO SSD drive, 1TB Western Digital Caviar Black HDD, Asus RoG
           STRIX GTX 1060 OC 6GB GPU, Dell U3415W 34" Ultawide QHD display, OS:
           Ubuntu 16.04 LTS. Runs 24/7 and has some Virtual Machines with
@@ -140,17 +140,34 @@
           <strong>#1</strong> <u>A Jimm's Business Class President</u>
           (assembled in Jimm's PC Store) Xeon E3-1230v3 3,3GHz, 16GB RAM, 250GB
           Samsung EVO SSD drive, 1TB Western Digital Caviar Black HDD, Asus RoG
-          STRIX GTX 1060 OC 6GB GPU, Dell U2515H 25" WQHD display, OS: Ubuntu
-          16.04 LTS. Runs 24/7 and has some Virtual Machines with services
-          always-on;<br>
+          STRIX GTX 1060 OC 6GB GPU, Dell U2515H 25" WQHD display, an extra
+          Intel GigE Pro Desktop NIC for full packet capture bridged for below
+          <strong>#3</strong> Security Onion VM, OS: Ubuntu 16.04 LTS. Runs 24/7
+          and has some Virtual Machines with services always-on;<br>
           <!--<strong>#2</strong> AMD Athlon64 3200+, 1024MB RAM, 20GB HDD, PNY
           Quadro 600 1GB GPU, OS: Ubuntu 16.04 (in text-mode);<br>
           <strong>#3</strong> ICL 486SX (with a 487 math-coprocessor) 33MHz,
           8MB RAM, 100MB HDD, OS: NetBSD 2.0_RC4 (headless).-->
-          <strong>#2</strong> A LibVirt/KVM VM with OpenBSD-stable for Unbound,
-          a DNS server for my LAN. Has 1 3.3GHz Haswell-NoTSX core, 1024MB RAM,
-          8GB qcow2-format with virtio bus mass storage and bridged virtio
-          networking;<br>
+          <strong>#2</strong> A Raspberry Pi 3 B running Unbound, a forwarding
+          DNS server for my LAN and for Irssi (IRC client);<br>
+          <strong>#3</strong> A LibVirt/KVM VM with a Ubuntu 14.04 LTS based
+          NIDS/HIDS/NSM/SIEM distro named
+          <a href="https://securityonion.net/" target="_blank">Security Onion</a>.
+          Has 4 3.3GHz Haswsell-NoTSX cores, 12GB RAM, 500GB raw-format virtio
+          bus mass storage and two virtualized &amp; brigded Intel Pro GBE NICs,
+          one for network connection, the other dedicated for packet sniffing.
+          Has for example Suricata, Bro, Netsniff-NG (pcap), OSSEC, Sguild, ELSA
+          and other network security tools and web-based user interfaces for
+          monitoring and analysis. I also connect with Sguil from my workstation
+          for SIEM (I guess that's what it is called?);<br>
+          <strong>#4</strong> A LibVirt/KVM VM with OpenBSD-stable for Unbound,
+          a forwarding DNS server for my LAN. Has 1 3.3GHz Haswell-NoTSX core,
+          512MB RAM, 8GB qcow2-format with virtio bus mass storage and bridged
+          virtio networking;<br>
+      </p>
+      <p>
+        The mentioned virtual machines run 24/7, suspending on workstation
+        shutdowns and reboots and resuming at workstations OS boot
       </p>
       <p>
           The underlined <strong>#1, Business Class President</strong> is
