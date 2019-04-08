@@ -5,5 +5,5 @@
 #### Idea is to move redundant HTML & js in every file to reusable js snippets
 ---
 Currently at
-<a href="https://github.com/vihoma/new-vihoma-homepages/" target="_blank">
-https://github.com/vihoma/new-vihoma-homepages/</a>
+<a href="https://vihoma.github.io/new-vihoma-homepages/" target="_blank">
+https://vihoma.github.io/new-vihoma-homepages/</a>
