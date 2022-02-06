@@ -1,5 +1,5 @@
 # Marko Vihoma's Homepage
 #### *My personal homepages*
 ---
-Currently mirrored at both a personal domain,
+Currently my personal domain points to GitHub Pages:
 https://www.vihoma.name/ and https://vihoma.github.io/
